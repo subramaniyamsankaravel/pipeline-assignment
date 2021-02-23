@@ -9,12 +9,9 @@ pipeline{
           stage("build & SonarQube analysis") {
             agent any
             steps {
-              withSonarQubeEnv('sonar-server') {
+              withSonarQubeEnv('sonar') {
                 sh 'java -version'
-                sh 'mvn sonar:sonar \
-  -Dsonar.projectKey=first-sonar \
-  -Dsonar.host.url=http://localhost:9000 \
-  -Dsonar.login=001c7c998253b7531f3a20da49814c91a70dbb6f'
+                sh 'mvn sonar:sonar'
               }
             }
           }
